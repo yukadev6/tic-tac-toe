@@ -29,8 +29,31 @@ def player_input():
             break
 player_input()
 
-def place_marker(board, position):
+def place_marker(board, player_1, position):
     position = int(input("Choose a number between 1 and 9 to mark your position on the board: "))
-    if position == 1:
-        return board[1] == 'X'
-place_marker(board, 1)
+    board[position] = player_1
+
+place_marker(board, 'X', 1)
+display_board(board)
+
+def win_check(board, mark):
+    if board[1] and board[2] and board[3] == mark:
+        print("You win!")
+    elif board[4] and board[5] and board[6] == mark:
+        print("You win!")
+    elif board[7] and board[8] and board[9] == mark:
+        print("You win!")
+    elif board[1] and board[4] and board[7] == mark:
+        print("You win!")
+    elif board[2] and board[5] and board[8] == mark:
+        print("You win!")
+    elif board[3] and board[6] and board[9] == mark:
+        print("You win!")
+    elif board[1] and board[5] and board[9] == mark:
+        print("You win!")
+    elif board[3] and board[5] and board[7] == mark:
+        print("You win!")
+    else:
+        pass
+    win_check(board, 'X')
+    display_board(board)
